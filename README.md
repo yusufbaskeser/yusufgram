@@ -293,16 +293,16 @@ Message (string)
 - followingId (number)   
 - Message (string)
 
-- **UnfollowUserResponseDto:**
+**UnfollowUserResponseDto:**
 - followerId (number)   
 - followingId (number)   
 - Message (string)
 
-- **FollowersCountResponseDto:**
+**FollowersCountResponseDto:**
 - userId (number)   
 - followersCount (number)
 
-- **FollowingCountResponseDto:**
+**FollowingCountResponseDto:**
 - userId (number)   
 - followingCount (number)
   
