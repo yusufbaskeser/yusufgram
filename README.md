@@ -95,33 +95,33 @@ A social media app allowing users to register, log in, share images with caption
 #### DTOs
 
 **LoginRequestDto:**
-- Username  
-- Password  
+- Username (string)
+- Password (string) 
 
 **LoginResponseDto:**
 - Token (string)  
 - Message (string)  
 
 **RegisterRequestDto:**
-- Username  
-- Password  
-- E-mail  
-- DateOfBirth  
-- Gender  
+- Username (string)  
+- Password (string) 
+- E-mail (string)  
+- DateOfBirth (date)  
+- Gender (string)  
 
-**RequestResponseDto:**
+**RegisterResponseDto:**
 - Token (string)  
 - Message (string)  
 
 #### Routes
 
 `POST /auth/login`  
-**Request:** `LoginDto`  
-**Response:** token, "User logined successfully"
+**Request:** `LoginRequestDto`  
+**Response:** `LoginResponseDto`
 
 `POST /auth/register`  
-**Request:** `RegisterDto`  
-**Response:** token, "User registered successfully"
+**Request:** `RegisterRequestDto`  
+**Response:** `RegisterResponseDto`
 
 ---
 
@@ -144,11 +144,23 @@ Message (string)
 
 #### Routes
 
-`GET /user/:userId` → `UserDataResponseDto`  
-`GET /user/:username` → `UserDataResponseDto`  
-`DELETE /user/:userId` → `UserMessageResponseDto`  
-`PUT /user/:userId` → `UserUpdateRequestDto` → `UserMessageResponseDto`  
-`PUT /user/changePassword/:userId` → `UserPasswordUpdateRequestDto` → `UserMessageResponseDto`
+`GET /user/:userId`  
+**Response:** `UserDataResponseDto`
+
+`GET /user/:username`  
+**Response:** `UserDataResponseDto`
+
+`DELETE /user/:userId`  
+**Response:** `UserMessageResponseDto`
+
+`PUT /user/:userId`  
+**Request:** `UserUpdateRequestDto`  
+**Response:** `UserMessageResponseDto`
+
+`PUT /user/changePassword/:userId`  
+**Request:** `UserPasswordUpdateRequestDto`  
+**Response:** `UserMessageResponseDto`
+
 
 ---
 
@@ -170,13 +182,28 @@ Message (string)
 
 #### Routes
 
-`GET /posts/:postId` → `GetPostResponseDto`  
-`GET /posts` → `GetPostResponseDto`  
-`POST /posts` → `PostRequestDto` → `PostResponseMessageDto`  
-`GET /posts/:userId/posts` → `GetPostResponseDto`  
-`PUT /posts/:postId` → `PostUpdateRequestDto` → `PostResponseMessageDto`  
-`DELETE /posts/:postId` → `PostResponseMessageDto`  
-`GET /posts/feed` → `GetPostResponseDto`
+`GET /posts/:postId`  
+**Response:** `GetPostResponseDto`
+
+`GET /posts`  
+**Response:** `GetPostResponseDto`
+
+`POST /posts`  
+**Request:** `PostRequestDto`  
+**Response:** `PostResponseMessageDto`
+
+`GET /posts/:userId/posts`  
+**Response:** `GetPostResponseDto`
+
+`PUT /posts/:postId`  
+**Request:** `PostUpdateRequestDto`  
+**Response:** `PostResponseMessageDto`
+
+`DELETE /posts/:postId`  
+**Response:** `PostResponseMessageDto`
+
+`GET /posts/feed`  
+**Response:** `GetPostResponseDto`
 
 ---
 
@@ -194,9 +221,15 @@ Message (string)
 
 #### Routes
 
-`POST /posts/:postId/like` → `likeResponseMessageDto`  
-`DELETE /posts/:postId/like` → `likeResponseMessageDto`  
-`GET /posts/:postId/likes` → `likeResponseDto`
+`POST /posts/:postId/like`  
+**Response:** `likeResponseMessageDto`
+
+`DELETE /posts/:postId/like`  
+**Response:** `likeResponseMessageDto`
+
+`GET /posts/:postId/likes`  
+**Response:** `likeResponseDto`
+
 
 ---
 
@@ -221,10 +254,20 @@ Message (string)
 
 #### Routes
 
-`POST /posts/:postID/comments` → `PostCommentRequestDto` → `PostCommentResponseDto`  
-`GET /posts/:postId/comments` → `GetCommentResponseDto`  
-`PUT /posts/:postID/:commentId` → `UpdateCommentRequestDto` → `PostCommentResponseDto`  
-`DELETE /comments/:commentId` → `PostCommentResponseDto`
+`POST /posts/:postID/comments`  
+**Request:** `PostCommentRequestDto`  
+**Response:** `PostCommentResponseDto`
+
+`GET /posts/:postId/comments`  
+**Response:** `GetCommentResponseDto`
+
+`PUT /posts/:postID/:commentId`  
+**Request:** `UpdateCommentRequestDto`  
+**Response:** `PostCommentResponseDto`
+
+`DELETE /comments/:commentId`  
+**Response:** `PostCommentResponseDto`
+
 
 ---
 
