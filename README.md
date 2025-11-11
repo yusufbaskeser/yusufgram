@@ -287,5 +287,6 @@ Message (string)
 - **generateJwtToken**  
 - **hashPassword**  
 - **comparePassword**
+- **refreshToken**
 
 ---
