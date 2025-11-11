@@ -310,11 +310,9 @@ Message (string)
 #### Routes
 
 `POST /follow/:userId/follow`  
-**Request:** `FollowUserRequestDto`  
 **Response:** `FollowUserResponseDto`  
 
 `DELETE /follow/:userId/unfollow`  
-**Request:** `UnfollowUserRequestDto`  
 **Response:** `UnfollowUserResponseDto`  
 
 `GET /users/:userId/followers/count`  
