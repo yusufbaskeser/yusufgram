@@ -89,6 +89,10 @@ A social media app allowing users to register, log in, share images with caption
 
 ---
 
+#### Table of All Entities
+![Table of All Entities](tableofall.jpg)
+
+
 ## 🚀 ENDPOINTS
 
 ### **AUTH**
