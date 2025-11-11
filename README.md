@@ -75,6 +75,7 @@ A social media app allowing users to register, log in, share images with caption
 | Field | Type | Description |
 |-------|------|-------------|
 | categoryId | Generated primary key |  |
+| categoryName | string |  |
 | updatedAt | datetime |  |
 
 ---
@@ -128,19 +129,19 @@ A social media app allowing users to register, log in, share images with caption
 ### **USER**
 
 **UserDataResponseDto:**  
-userId, username, password, email, DateOfBirth, Gender, profilePicture, Bio  
+userId (int), username (string), password (string), email (string), DateOfBirth (date), Gender (string), profilePicture (string), Bio (string)  
 
 **UserMessageResponseDto:**  
 Message (string)  
 
 **UserUpdateRequestDto:**  
-- Username?  
-- Bio?  
-- profilePicture?  
+- Username? (string)  
+- Bio? (string)  
+- profilePicture? (string)  
 
 **UserPasswordUpdateRequestDto:**  
-- oldPassword  
-- newPassword  
+- oldPassword (string)  
+- newPassword (string)  
 
 #### Routes
 
@@ -167,18 +168,18 @@ Message (string)
 ### **POST**
 
 **PostRequestDto:**  
-- imageUrl  
-- caption?  
+- imageUrl (string)  
+- caption? (string)  
 
 **PostResponseMessageDto:**  
 - Message (string)  
 
 **GetPostResponseDto:**  
-- postId, userId, imageUrl, caption, createdAt, updatedAt  
+- postId (int), userId (int), imageUrl (string), caption (string), createdAt (date), updatedAt (date)  
 
 **PostUpdateRequestDto:**  
-- imageUrl?  
-- caption?  
+- imageUrl? (string)  
+- caption? (string)  
 
 #### Routes
 
@@ -213,11 +214,11 @@ Message (string)
 - Message (string)  
 
 **likeResponseDto:**  
-- likeId  
-- postId  
-- userId  
-- createdAt  
-- updatedAt  
+- likeId (int)  
+- postId (int)   
+- userId (int)   
+- createdAt (date)   
+- updatedAt (date)   
 
 #### Routes
 
@@ -236,21 +237,21 @@ Message (string)
 ### **COMMENTS**
 
 **PostCommentRequestDto:**  
-- Content  
+- Content (string)   
 
 **PostCommentResponseDto:**  
 - Message (string)  
 
 **GetCommentResponseDto:**  
-- commentId  
-- postId  
-- userId  
-- content  
-- createdAt  
-- updatedAt  
+- commentId (int)   
+- postId (int)   
+- userId (int)   
+- content (string)   
+- createdAt (date)   
+- updatedAt (date)   
 
 **UpdateCommentRequestDto:**  
-- Content?  
+- Content? (string)    
 
 #### Routes
 
