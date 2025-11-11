@@ -21,71 +21,71 @@ A social media app allowing users to register, log in, share images with caption
 ## 🧩 ENTITIES
 
 ### **User**
-| Field | Type | Description |
-|-------|------|-------------|
-| userId | Generated primary key |  |
-| username | string |  |
-| password | string |  |
-| email | string |  |
-| DateOfBirth | date |  |
-| Gender | string |  |
-| profilePicture | Optional default |  |
-| Bio | Optional string |  |
-| createdAt | datetime |  |
-| updatedAt | datetime |  |
+| Field | Type |
+|-------|------|
+| userId | Generated primary key |
+| username | string |
+| password | string |
+| email | string |
+| DateOfBirth | date | 
+| Gender | string |
+| profilePicture | Optional default |
+| Bio | Optional string |
+| createdAt | datetime |
+| updatedAt | datetime |
 
 ---
 
 ### **Post**
-| Field | Type | Description |
-|-------|------|-------------|
-| postId | Generated primary key |  |
-| userId | foreign key |  |
-| imageUrl | string |  |
-| caption | string |  |
-| createdAt | datetime |  |
-| updatedAt | datetime |  |
+| Field | Type |
+|-------|------|
+| postId | Generated primary key |
+| userId | foreign key |  
+| imageUrl | string |  
+| caption | string |  
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
 ---
 
 ### **Comment**
-| Field | Type | Description |
-|-------|------|-------------|
-| commentId | Generated primary key |  |
-| postId | foreign key |  |
-| userId | foreign key |  |
-| content | string |  |
-| createdAt | datetime |  |
-| updatedAt | datetime |  |
+| Field | Type | 
+|-------|------|
+| commentId | Generated primary key |  
+| postId | foreign key |  
+| userId | foreign key |  
+| content | string |  
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
 ---
 
 ### **Like**
-| Field | Type | Description |
-|-------|------|-------------|
-| likeId | Generated primary key |  |
-| postId | foreign key |  |
-| userId | foreign key |  |
-| createdAt | datetime |  |
-| updatedAt | datetime |  |
+| Field | Type | 
+|-------|------|
+| likeId | Generated primary key |  
+| postId | foreign key |  
+| userId | foreign key | 
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
 ---
 
 ### **Category**
-| Field | Type | Description |
-|-------|------|-------------|
-| categoryId | Generated primary key |  |
-| categoryName | string |  |
-| updatedAt | datetime |  |
+| Field | Type |
+|-------|------|
+| categoryId | Generated primary key |  
+| categoryName | string |  
+| updatedAt | datetime |  
 
 ---
 
 ### **PostCategory**
-| Field | Type | Description |
-|-------|------|-------------|
-| postId | primary key, foreign key |  |
-| categoryId | primary key, foreign key |  |
-| updatedAt | datetime |  |
+| Field | Type | 
+|-------|------|
+| postId | primary key, foreign key |  
+| categoryId | primary key, foreign key |  
+| updatedAt | datetime |  
 
 ---
 
