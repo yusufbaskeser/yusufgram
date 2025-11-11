@@ -286,6 +286,45 @@ Message (string)
 
 ---
 
+### **FOLLOW**
+
+**FollowUserResponseDto:**
+- followerId (number)   
+- followingId (number)   
+- Message (string)
+
+- **UnfollowUserResponseDto:**
+- followerId (number)   
+- followingId (number)   
+- Message (string)
+
+- **FollowersCountResponseDto:**
+- userId (number)   
+- followersCount (number)
+
+- **FollowingCountResponseDto:**
+- userId (number)   
+- followingCount (number)
+  
+
+#### Routes
+
+`POST /follow/:userId/follow`  
+**Request:** `FollowUserRequestDto`  
+**Response:** `FollowUserResponseDto`  
+
+`DELETE /follow/:userId/unfollow`  
+**Request:** `UnfollowUserRequestDto`  
+**Response:** `UnfollowUserResponseDto`  
+
+`GET /users/:userId/followers/count`  
+**Response:** `FollowersCountResponseDto`  
+
+`GET /users/:userId/following/count`  
+**Response:** `FollowingCountResponseDto`  
+
+  
+  
 ## 🧱 MIDDLEWARES
 
 - **TokenCheck**
