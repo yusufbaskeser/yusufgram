@@ -89,6 +89,16 @@ A social media app allowing users to register, log in, share images with caption
 
 ---
 
+### **Follow**
+| Field | Type | 
+|-------|------|
+| followerId | primary key , foreign key|  
+| followingId | primary key , foreign key |
+| createdAt | datetime | 
+| updatedAt | datetime | 
+
+---
+
 #### Table of All Entities
 ![Table of All Entities](tableofall.jpg)
 
