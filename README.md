@@ -333,10 +333,17 @@ Message (string)
 **Response:** `FollowingCountResponseDto`  
 
   
-  
+## 📝 TO DO LIST
+
+- **Versioning**
+- **Skip and Limit Parametres**
+
+---
+   
 ## 🧱 MIDDLEWARES
 
 - **TokenCheck**
+- **DeviceTrackingGuard**
 
 ---
 
