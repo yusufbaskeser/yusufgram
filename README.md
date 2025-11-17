@@ -111,7 +111,7 @@ A social media app allowing users to register, log in, share images with caption
 | **updatedAt** | datetime |
 
 #### Table of All Entities
-![Table of All Entities](alltables.jpg)
+![Table of All Entities](table.jpg)
 
 
 ## 🚀 ENDPOINTS
