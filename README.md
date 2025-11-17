@@ -8,7 +8,7 @@ A social media app allowing users to register, log in, share images with caption
 
 - **NestJS** → Backend framework  
 - **Express** → HTTP server (used under NestJS)  
-- **MySQL** → Database  
+- **PostgreSQL** → Database  
 - **TypeORM** → ORM (between NestJS and database)  
 - **dotenv** → Environment variable management  
 - **bcrypt** → Password hashing  
@@ -98,6 +98,17 @@ A social media app allowing users to register, log in, share images with caption
 | updatedAt | datetime | 
 
 ---
+
+### **Device**
+| Field | Type |
+| :--- | :--- |
+| **deviceId** | Generated primary key |
+| **userId** | Foreign Key |
+| **deviceType** | string |
+| **modelName** | string |
+| **lastUsedAt** | datetime |
+| **createdAt** | datetime |
+| **updatedAt** | datetime |
 
 #### Table of All Entities
 ![Table of All Entities](alltables.jpg)
