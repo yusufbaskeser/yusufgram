@@ -12,7 +12,9 @@ A social media app allowing users to register, log in, share images with caption
 - **TypeORM** → ORM (between NestJS and database)  
 - **dotenv** → Environment variable management  
 - **bcrypt** → Password hashing  
-- **jsonwebtoken (JWT)** → Authentication / token management  
+- **jsonwebtoken (JWT)** → Authentication / token management
+- **Redis** → Speed for posts
+- **Socket.io** → Real Time Application  
 - **class-validator** → DTO validation  
 - **class-transformer** → DTO and entity transformation  
 
