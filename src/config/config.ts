@@ -10,4 +10,8 @@ const dbConfig = {
   DB_NAME: process.env.DB_NAME,
   DB_SSL: process.env.DB_SSL,
 };
-export default dbConfig;
+const redisConfig = {
+  REDIS_URL: process.env.REDIS_URL,
+};
+
+export { dbConfig, redisConfig };
