@@ -1,98 +1,359 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🧠 YUSUFGRAM
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A social media app allowing users to register, log in, share images with captions, interact via likes and comments, and personalize their profile with a picture and bio.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## ⚙️ Technologies
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS** → Backend framework  
+- **Express** → HTTP server (used under NestJS)  
+- **PostgreSQL** → Database  
+- **TypeORM** → ORM (between NestJS and database)  
+- **dotenv** → Environment variable management  
+- **bcrypt** → Password hashing  
+- **jsonwebtoken (JWT)** → Authentication / token management
+- **Redis** → Speed for posts
+- **Socket.io** → Real Time Application  
+- **class-validator** → DTO validation  
+- **class-transformer** → DTO and entity transformation  
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## 🧩 ENTITIES
 
-## Compile and run the project
+### **User**
+| Field | Type |
+|-------|------|
+| userId | Generated primary key |
+| username | string |
+| password | string |
+| email | string |
+| DateOfBirth | date | 
+| Gender | string |
+| profilePicture | Optional default |
+| Bio | Optional string |
+| createdAt | datetime |
+| updatedAt | datetime |
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+### **Post**
+| Field | Type |
+|-------|------|
+| postId | Generated primary key |
+| userId | foreign key |  
+| imageUrl | string |  
+| caption | string |  
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+### **Comment**
+| Field | Type | 
+|-------|------|
+| commentId | Generated primary key |  
+| postId | foreign key |  
+| userId | foreign key |  
+| content | string |  
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+### **Like**
+| Field | Type | 
+|-------|------|
+| likeId | Generated primary key |  
+| postId | foreign key |  
+| userId | foreign key | 
+| createdAt | datetime |  
+| updatedAt | datetime |  
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+### **Category**
+| Field | Type |
+|-------|------|
+| categoryId | Generated primary key |  
+| categoryName | string |  
+| updatedAt | datetime |  
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+---
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### **PostCategory**
+| Field | Type | 
+|-------|------|
+| postId | primary key, foreign key |  
+| categoryId | primary key, foreign key |  
+| updatedAt | datetime |  
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+---
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### **Follow**
+| Field | Type | 
+|-------|------|
+| followerId | primary key , foreign key|  
+| followingId | primary key , foreign key |
+| createdAt | datetime | 
+| updatedAt | datetime | 
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
+### **Device**
+| Field | Type |
+| :--- | :--- |
+| **deviceId** | Generated primary key |
+| **userId** | Foreign Key |
+| **deviceType** | string |
+| **modelName** | string |
+| **lastUsedAt** | datetime |
+| **createdAt** | datetime |
+| **updatedAt** | datetime |
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+#### Table of All Entities
+![Table of All Entities](table.jpg)
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 🚀 ENDPOINTS
 
-## Stay in touch
+### **AUTH**
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### DTOs
 
-## License
+**LoginRequestDto:**
+- Username (string)
+- Password (string) 
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+**LoginResponseDto:**
+- Token (string)  
+- Message (string)  
+
+**RegisterRequestDto:**
+- Username (string)  
+- Password (string) 
+- E-mail (string)  
+- DateOfBirth (date)  
+- Gender (string)  
+
+**RegisterResponseDto:**
+- Token (string)  
+- Message (string)  
+
+#### Routes
+
+`POST /auth/login`  
+**Request:** `LoginRequestDto`  
+**Response:** `LoginResponseDto`
+
+`POST /auth/register`  
+**Request:** `RegisterRequestDto`  
+**Response:** `RegisterResponseDto`
+
+---
+
+### **USER**
+
+**UserDataResponseDto:**  
+userId (int), username (string), password (string), email (string), DateOfBirth (date), Gender (string), profilePicture (string), Bio (string)  
+
+**UserMessageResponseDto:**  
+Message (string)  
+
+**UserUpdateRequestDto:**  
+- Username? (string)  
+- Bio? (string)  
+- profilePicture? (string)  
+
+**UserPasswordUpdateRequestDto:**  
+- oldPassword (string)  
+- newPassword (string)  
+
+#### Routes
+
+`GET /user/:userId`  
+**Response:** `UserDataResponseDto`
+
+`GET /user/:username`  
+**Response:** `UserDataResponseDto`
+
+`DELETE /user/:userId`  
+**Response:** `UserMessageResponseDto`
+
+`PUT /user/:userId`  
+**Request:** `UserUpdateRequestDto`  
+**Response:** `UserMessageResponseDto`
+
+`PUT /user/changePassword/:userId`  
+**Request:** `UserPasswordUpdateRequestDto`  
+**Response:** `UserMessageResponseDto`
+
+
+---
+
+### **POST**
+
+**PostRequestDto:**  
+- imageUrl (string)  
+- caption? (string)  
+
+**PostResponseMessageDto:**  
+- Message (string)  
+
+**GetPostResponseDto:**  
+- postId (int), userId (int), imageUrl (string), caption (string), createdAt (date), updatedAt (date)  
+
+**PostUpdateRequestDto:**  
+- imageUrl? (string)  
+- caption? (string)  
+
+#### Routes
+
+`GET /posts/:postId`  
+**Response:** `GetPostResponseDto`
+
+`GET /posts`  
+**Response:** `GetPostResponseDto`
+
+`POST /posts`  
+**Request:** `PostRequestDto`  
+**Response:** `PostResponseMessageDto`
+
+`GET /posts/:userId/posts`  
+**Response:** `GetPostResponseDto`
+
+`PUT /posts/:postId`  
+**Request:** `PostUpdateRequestDto`  
+**Response:** `PostResponseMessageDto`
+
+`DELETE /posts/:postId`  
+**Response:** `PostResponseMessageDto`
+
+`GET /posts/feed`  
+**Response:** `GetPostResponseDto`
+
+---
+
+### **LIKE**
+
+**likeResponseMessageDto:**  
+- Message (string)  
+
+**likeResponseDto:**  
+- likeId (int)  
+- postId (int)   
+- userId (int)   
+- createdAt (date)   
+- updatedAt (date)   
+
+#### Routes
+
+`POST /posts/:postId/like`  
+**Response:** `likeResponseMessageDto`
+
+`DELETE /posts/:postId/like`  
+**Response:** `likeResponseMessageDto`
+
+`GET /posts/:postId/likes`  
+**Response:** `likeResponseDto`
+
+
+---
+
+### **COMMENTS**
+
+**PostCommentRequestDto:**  
+- Content (string)   
+
+**PostCommentResponseDto:**  
+- Message (string)  
+
+**GetCommentResponseDto:**  
+- commentId (int)   
+- postId (int)   
+- userId (int)   
+- content (string)   
+- createdAt (date)   
+- updatedAt (date)   
+
+**UpdateCommentRequestDto:**  
+- Content? (string)    
+
+#### Routes
+
+`POST /posts/:postID/comments`  
+**Request:** `PostCommentRequestDto`  
+**Response:** `PostCommentResponseDto`
+
+`GET /posts/:postId/comments`  
+**Response:** `GetCommentResponseDto`
+
+`PUT /posts/:postID/:commentId`  
+**Request:** `UpdateCommentRequestDto`  
+**Response:** `PostCommentResponseDto`
+
+`DELETE /comments/:commentId`  
+**Response:** `PostCommentResponseDto`
+
+
+---
+
+### **FOLLOW**
+
+**FollowUserResponseDto:**
+- followerId (number)   
+- followingId (number)   
+- Message (string)
+
+**UnfollowUserResponseDto:**
+- followerId (number)   
+- followingId (number)   
+- Message (string)
+
+**FollowersCountResponseDto:**
+- userId (number)   
+- followersCount (number)
+
+**FollowingCountResponseDto:**
+- userId (number)   
+- followingCount (number)
+  
+
+#### Routes
+
+`POST /follow/:userId/follow`  
+**Response:** `FollowUserResponseDto`  
+
+`DELETE /follow/:userId/unfollow`  
+**Response:** `UnfollowUserResponseDto`  
+
+`GET /users/:userId/followers/count`  
+**Response:** `FollowersCountResponseDto`  
+
+`GET /users/:userId/following/count`  
+**Response:** `FollowingCountResponseDto`  
+
+  
+## 📝 TO DO LIST
+
+- **Versioning**
+- **Skip and Limit Parametres**
+
+---
+   
+## 🧱 MIDDLEWARES
+
+- **TokenCheck**
+- **DeviceTrackingGuard**
+
+---
+
+## 🧰 UTILS
+
+- **generateJwtToken**  
+- **hashPassword**  
+- **comparePassword**
+- **refreshToken**
+
+---
