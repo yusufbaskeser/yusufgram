@@ -1,0 +1,2 @@
+bu feed mantığını oturt ve baya detaylandır gerekirse
+kullanıcı kategöriyi kendisi seçicek sadece frontende kategöriyi sunucaz
