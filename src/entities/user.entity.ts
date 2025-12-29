@@ -4,6 +4,7 @@ import { Comment } from './comment.entity';
 import { Like } from './like.entity';
 import { Device } from './device_track.entity';
 import { Follow } from './follow.entity';
+import { Notification } from './notification.entity';
 
 @Entity()
 export class User {
@@ -54,4 +55,8 @@ export class User {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
+
+  @OneToMany(() => Notification, (n) => n.user)
+notifications: Notification[];
+
 }
