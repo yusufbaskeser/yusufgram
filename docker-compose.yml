@@ -3,7 +3,7 @@ version: "3.9"
 services:
   api:
     build: .
-    container_name: yusufgram_api
+    container_name: yusufgram
     ports:
       - "3000:3000"
     env_file:
