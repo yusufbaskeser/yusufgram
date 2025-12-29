@@ -112,6 +112,20 @@ A social media app allowing users to register, log in, share images with caption
 | **createdAt** | datetime |
 | **updatedAt** | datetime |
 
+### **Notification**
+| Field | Type |
+|-------|------|
+| notificationId | Generated primary key |
+| userId | Foreign key → User |
+| actorId | Foreign key → User |
+| type | Enum (LIKE, COMMENT, FOLLOW) |
+| postId | Foreign key → Post (Optional) |
+| isRead | Boolean (default: false) |
+| createdAt | datetime |
+
+---
+
+
 #### Table of All Entities
 ![Table of All Entities](table.jpg)
 
