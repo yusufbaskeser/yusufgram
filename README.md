@@ -116,11 +116,11 @@ A social media app allowing users to register, log in, share images with caption
 | Field | Type |
 |-------|------|
 | notificationId | Generated primary key |
-| userId | Foreign key → User |
-| actorId | Foreign key → User |
-| type | Enum (LIKE, COMMENT, FOLLOW) |
-| postId | Foreign key → Post (Optional) |
-| isRead | Boolean (default: false) |
+| userId | Foreign key |
+| actorId | Foreign key |
+| type | Enum |
+| postId | Foreign key |
+| isRead | Boolean |
 | createdAt | datetime |
 
 ---
