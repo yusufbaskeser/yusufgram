@@ -11,4 +11,8 @@ const dbConfig = {
   DB_SSL: process.env.DB_SSL,
 };
 
+const redisConfig = {
+  REDISURL : process.env.REDISURL
+}
+
 export { dbConfig };

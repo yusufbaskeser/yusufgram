@@ -1,15 +1,10 @@
-import { IsOptional, IsString, IsUrl } from 'class-validator';
+import { IsString, MinLength } from 'class-validator';
 
-export class UserUpdateRequestDto {
-  @IsOptional()
+export class UserPasswordUpdateRequestDto {
   @IsString()
-  username?: string;
+  oldPassword: string;
 
-  @IsOptional()
   @IsString()
-  bio?: string;
-
-  @IsOptional()
-  @IsString()
-  profilePicture?: string;
+  @MinLength(6)
+  newPassword: string;
 }

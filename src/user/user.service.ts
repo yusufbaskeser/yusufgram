@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { User } from 'src/entities/user.entity';
-import { UserUpdateRequestDto } from './user_Dto/userPassword/userPasswordUpdateRequestDto';
-import { UserPasswordUpdateRequestDto } from './user_Dto/userUpdate/userUpdateRequestDto';
+import { UserPasswordUpdateRequestDto } from './user_Dto/userPassword/userPasswordUpdateRequestDto';
+import { UserUpdateRequestDto } from './user_Dto/userUpdate/userUpdateRequestDto';
 import { UserDataResponseDto } from './user_Dto/userData/userDataResponseDto';
 import { UserMessageResponseDto } from './user_Dto/userMessage/userMessageResponseDto';
 import { UserValidations } from './user_validations/user.validations';
